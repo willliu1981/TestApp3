@@ -29,16 +29,32 @@ class P {
 class P6 {
 	public static void main(String[] args) {
 		P6 p = new P6();
-		Granary gr = p.new Granary(9, 600);
+		Granary gr = p.new Granary("穀倉", 9, 600);
 		Rice rice = p.new Rice();
-		rice.setQuantity(2800);
+		rice.setQuantity(1700);
 		Wheat wheat = p.new Wheat();
-		wheat.setQuantity(2700);
+		wheat.setQuantity(700);
 		gr.push(rice);
 		gr.push(wheat);
-		S.o.l(gr);
-		S.o.l(rice);
-		S.o.l(wheat);
+		S.o.l("供給-穀倉 ", gr);
+
+		Consumer consumer = p.new Consumer("食物攤販", 4);
+		Consumer consumer2 = p.new Consumer("食物攤販", 4);
+		consumer.setStack(p.new Rice(100, 200), p.new Rice(50, 200), p.new Wheat(50, 200));
+
+		gr.pop(consumer);
+		S.o.l("需求-倉庫1 ", gr);
+		// S.o.l("需求-攤販1 ",consumer);
+
+		consumer2.setStack(p.new Rice(200), p.new Rice(200), p.new Wheat(200));
+		gr.pop(consumer2);
+		S.o.l("需求-倉庫1 ", gr);
+		// S.o.l("需求-攤販2 ",consumer2);
+
+		/*
+		 * rice.setQuantity(500); wheat.setQuantity(500); gr.push(rice); gr.push(wheat);
+		 * S.o.l("供給-穀倉 ",gr);
+		 *///
 	}
 
 	class Supplier {
@@ -46,6 +62,34 @@ class P6 {
 	}
 
 	class Consumer {
+		private String name;
+		private Food[] stacks;
+
+		public Consumer(String name, int maxStacks) {
+			this.name = name;
+			this.stacks = new Food[maxStacks];
+		}
+
+		public void setStack(Food food, int idx) {
+			this.stacks[idx] = food;
+		}
+
+		public void setStack(Food... stacks) {
+			this.stacks = stacks;
+		}
+
+		public Food[] getStacks() {
+			return stacks;
+		}
+
+		public String getName() {
+			return this.name;
+		}
+
+		@Override
+		public String toString() {
+			return String.format("名稱:%s 最大棧位:%d 貨物:%s", this.name, this.stacks.length, Arrays.asList(this.stacks));
+		}
 
 	}
 
@@ -54,12 +98,33 @@ class P6 {
 	}
 
 	class Granary {
+		private String name;
 		private final Food[] stacks;
-		private final Integer maxSpace;
+		private final int maxSpace;
 
-		public Granary(int maxStacks, int maxSpace) {
-			stacks = new Food[maxStacks];
+		public Granary(String name, int maxStacks, int maxSpace) {
+			this.name = name;
+			this.stacks = new Food[maxStacks];
 			this.maxSpace = maxSpace;
+		}
+
+		public void pop(Consumer consumer) {
+			int idx = 0;
+			while (idx < consumer.stacks.length) {
+				if (consumer.stacks != null && consumer.stacks[idx] != null) {
+					for (int i = 0; i < stacks.length; i++) {
+						if (stacks[i] != null
+								&& consumer.getStacks()[idx].getName().equalsIgnoreCase(stacks[i].getName())) {
+							if (consumer.getStacks()[idx].anySpace()) {
+								stacks[i].quantity -= consumer.getStacks()[idx].push(stacks[i].quantity,
+										consumer.getStacks()[idx].getMaxSpace());
+								this.refresh(idx);
+							}
+						}
+					}
+				}
+				idx++;
+			}
 		}
 
 		// 供貨者放入倉庫,完全放入回傳true,若供貨者尚有貨物則回傳false
@@ -84,7 +149,6 @@ class P6 {
 				if ((idx = anyEmptyStack()) != -1) {
 					this.stacks[idx] = food.creatNew();
 					stacks[idx].quantity += food.pop(this.maxSpace);
-					S.o.fn("stack idx:%d , quantity:%d", idx, food.getQuantity());
 					if (food.quantity > 0) {
 						continue;
 					} else {
@@ -95,6 +159,22 @@ class P6 {
 				}
 			}
 			return food.quantity == 0;
+		}
+
+		private void refresh() {
+			int idx = 0;
+			while (idx < this.stacks.length) {
+				this.refresh(idx);
+			}
+		}
+
+		private void refresh(int idx) {
+			if (this.stacks[idx] != null) {
+				if (this.stacks[idx].getQuantity() == 0) {
+					this.stacks[idx] = null;
+				}
+			}
+
 		}
 
 		private void fill(int idx) {
@@ -122,14 +202,27 @@ class P6 {
 
 		@Override
 		public String toString() {
-			return String.format("最大棧位:%d ,棧位最大容量:%d 貨物:%s", this.stacks.length, this.maxSpace,
+			return String.format("名稱:%s, 最大棧位:%d, 棧位最大容量:%d 貨物:%s", this.name, this.stacks.length, this.maxSpace,
 					Arrays.asList(this.stacks));
 		}
 
 	}
 
 	abstract class Food implements Cloneable {
-		protected Integer quantity;
+		protected int quantity;
+		protected int maxSpace;
+
+		public Food() {
+		}
+
+		public Food(int maxSpace) {
+			this.maxSpace = maxSpace;
+		}
+
+		public Food(int quantity, int maxSpace) {
+			this.quantity = quantity;
+			this.maxSpace = maxSpace;
+		}
 
 		abstract String name();
 
@@ -155,7 +248,11 @@ class P6 {
 			return f;
 		}
 
-		// 取出數量,若小於零,表示多取出多少數量
+		public boolean anySpace() {
+			return this.quantity < this.maxSpace;
+		}
+
+		// 取出數量,回傳成功取出數量
 		public int pop(int quantity) {
 			int r = 0;
 			if (this.quantity >= quantity) {
@@ -166,6 +263,23 @@ class P6 {
 				this.quantity = 0;
 			}
 			return r;
+		}
+
+		// 存入數量,回傳成功存入數量
+		public int push(int quantity, int limit) {
+			int r = 0;
+			if (this.quantity + quantity > limit) {
+				r = limit - this.quantity;
+				this.quantity = limit;
+			} else {
+				this.quantity += quantity;
+				r = quantity;
+			}
+			return r;
+		}
+
+		public int getMaxSpace() {
+			return maxSpace;
 		}
 
 		public String getName() {
@@ -182,11 +296,22 @@ class P6 {
 
 		@Override
 		public String toString() {
-			return String.format("名稱:%s , 數量:%d", this.name(), this.quantity);
+			return String.format("[名稱:%s , 數量:%d]", this.name(), this.quantity);
 		}
 	}
 
 	class Rice extends Food {
+
+		public Rice() {
+		}
+
+		public Rice(int i) {
+			super.maxSpace = i;
+		}
+
+		public Rice(int i, int j) {
+			super(i, j);
+		}
 
 		@Override
 		String name() {
@@ -197,6 +322,18 @@ class P6 {
 	}
 
 	class Wheat extends Food {
+
+		public Wheat() {
+
+		}
+
+		public Wheat(int i) {
+			super(i);
+		}
+
+		public Wheat(int i, int j) {
+			super(i, j);
+		}
 
 		@Override
 		String name() {
