@@ -2,7 +2,6 @@ package java9;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -12,6 +11,8 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.io.RandomAccessFile;
 import java.lang.reflect.Method;
+import java.util.Arrays;
+import java.util.Objects;
 
 public class Sample {
 	public static void main(String[] args) throws Exception {
@@ -25,22 +26,214 @@ class P {
 	}
 }
 
+class P6 {
+	public static void main(String[] args) {
+		P6 p = new P6();
+		Granary gr = p.new Granary(9, 600);
+		Rice rice = p.new Rice();
+		rice.setQuantity(2800);
+		Wheat wheat = p.new Wheat();
+		wheat.setQuantity(2700);
+		gr.push(rice);
+		gr.push(wheat);
+		S.o.l(gr);
+		S.o.l(rice);
+		S.o.l(wheat);
+	}
+
+	class Supplier {
+
+	}
+
+	class Consumer {
+
+	}
+
+	class GranaryManager {
+
+	}
+
+	class Granary {
+		private final Food[] stacks;
+		private final Integer maxSpace;
+
+		public Granary(int maxStacks, int maxSpace) {
+			stacks = new Food[maxStacks];
+			this.maxSpace = maxSpace;
+		}
+
+		// 供貨者放入倉庫,完全放入回傳true,若供貨者尚有貨物則回傳false
+		public boolean push(Food food) {
+			int idx = 0;
+			while (idx < stacks.length) {
+				if (stacks[idx] != null && food.getName().equalsIgnoreCase(stacks[idx].getName())) {
+					int space = 0;
+					if ((space = anySpace(idx)) > 0) {
+						stacks[idx].quantity += food.pop(space);
+					}
+				}
+				idx++;
+				if (food.quantity > 0) {
+					continue;
+				} else {
+					break;
+				}
+			}
+
+			while (true) {
+				if ((idx = anyEmptyStack()) != -1) {
+					this.stacks[idx] = food.creatNew();
+					stacks[idx].quantity += food.pop(this.maxSpace);
+					S.o.fn("stack idx:%d , quantity:%d", idx, food.getQuantity());
+					if (food.quantity > 0) {
+						continue;
+					} else {
+						break;
+					}
+				} else {
+					break;
+				}
+			}
+			return food.quantity == 0;
+		}
+
+		private void fill(int idx) {
+			this.stacks[idx].setQuantity(this.maxSpace);
+		}
+
+		// 棧位有空間,回傳剩餘容量
+		private int anySpace(int idx) {
+			return this.stacks[idx] != null ? this.maxSpace - this.stacks[idx].getQuantity() : 0;
+		}
+
+		// 有任何棧位,回傳陣列index
+		private int anyEmptyStack() {
+			int r = -1;
+			int idx = 0;
+			for (Food d : stacks) {
+				if (d == null) {
+					r = idx;
+					break;
+				}
+				idx++;
+			}
+			return r;
+		}
+
+		@Override
+		public String toString() {
+			return String.format("最大棧位:%d ,棧位最大容量:%d 貨物:%s", this.stacks.length, this.maxSpace,
+					Arrays.asList(this.stacks));
+		}
+
+	}
+
+	abstract class Food implements Cloneable {
+		protected Integer quantity;
+
+		abstract String name();
+
+		private void init() {
+			this.quantity = 0;
+		}
+
+		@Override
+		public Food clone() {
+			Food f = null;
+			try {
+				f = (Food) super.clone();
+			} catch (CloneNotSupportedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return f;
+		}
+
+		public Food creatNew() {
+			Food f = this.clone();
+			f.init();
+			return f;
+		}
+
+		// 取出數量,若小於零,表示多取出多少數量
+		public int pop(int quantity) {
+			int r = 0;
+			if (this.quantity >= quantity) {
+				this.quantity -= quantity;
+				r = quantity;
+			} else {
+				r = this.quantity;
+				this.quantity = 0;
+			}
+			return r;
+		}
+
+		public String getName() {
+			return this.name();
+		}
+
+		public Integer getQuantity() {
+			return quantity;
+		}
+
+		public void setQuantity(Integer quantity) {
+			this.quantity = quantity;
+		}
+
+		@Override
+		public String toString() {
+			return String.format("名稱:%s , 數量:%d", this.name(), this.quantity);
+		}
+	}
+
+	class Rice extends Food {
+
+		@Override
+		String name() {
+			// TODO Auto-generated method stub
+			return "稻米";
+		}
+
+	}
+
+	class Wheat extends Food {
+
+		@Override
+		String name() {
+			// TODO Auto-generated method stub
+			return "小麥";
+		}
+
+	}
+
+	class Pork extends Food {
+
+		@Override
+		String name() {
+			// TODO Auto-generated method stub
+			return "豬肉";
+		}
+
+	}
+
+}
+
 class P5 {
-	public static void main(String[] args)  {
-		EBook b = new EBook(5);
+	public static void main(String[] args) {
+		EBook b = new EBook(5, 2);
 		Thread t = new Thread(b, "Java");
-		EBook b2 = new EBook(10, 3);
+		EBook b2 = new EBook(7);
 		Thread t2 = new Thread(b2, "PHP");
 		t.start();
 		t2.start();
 		try {
 			t.join();
-			t.join();
+			t2.join();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		S.o.l(b);
 		S.o.l(b2);
 	}
