@@ -34,30 +34,60 @@ class P6 {
 		rice.setQuantity(1700);
 		Wheat wheat = p.new Wheat();
 		wheat.setQuantity(700);
-		gr.push(rice);
-		gr.push(wheat);
-		S.o.l("供給-穀倉 ", gr);
+		Pork pork = p.new Pork();
+		pork.setQuantity(1000);
+
+		Supplier farmer1 = p.new Supplier("農夫", rice);
+		Supplier farmer2 = p.new Supplier("農夫", wheat);
+		Supplier farmer3 = p.new Supplier("養豬戶", pork);
+		S.o.l("供給者1 ", farmer1);
+		S.o.l("供給者2 ", farmer2);
+		S.o.l("供給者3 ", farmer3);
+
+		// *
+		gr.push(farmer1);
+		gr.push(farmer2);
+		gr.push(farmer3);
+		///
+		
+		S.o.l("供給->穀倉 ", gr);
 
 		Consumer consumer = p.new Consumer("食物攤販", 4);
 		Consumer consumer2 = p.new Consumer("食物攤販", 4);
 		consumer.setStack(p.new Rice(100, 200), p.new Rice(50, 200), p.new Wheat(50, 200));
 
 		gr.pop(consumer);
-		S.o.l("需求-倉庫1 ", gr);
+		S.o.l("穀倉->需求 ", gr);
 		// S.o.l("需求-攤販1 ",consumer);
 
 		consumer2.setStack(p.new Rice(200), p.new Rice(200), p.new Wheat(200));
 		gr.pop(consumer2);
-		S.o.l("需求-倉庫1 ", gr);
-		// S.o.l("需求-攤販2 ",consumer2);
+		S.o.l("穀倉->需求 ", gr);
 
-		/*
-		 * rice.setQuantity(500); wheat.setQuantity(500); gr.push(rice); gr.push(wheat);
-		 * S.o.l("供給-穀倉 ",gr);
-		 *///
 	}
 
-	class Supplier {
+	class Supplier extends Food {
+		private String name;
+		private Food food;
+
+		public Supplier(String name, Food food) {
+			this.name = name;
+			this.food = food;
+		}
+
+		public Food getFood() {
+			return this.food;
+		}
+
+		@Override
+		String name() {
+			return this.name;
+		}
+
+		@Override
+		public String toString() {
+			return String.format("名稱:%s 食物:%s", this.name, this.food);
+		}
 
 	}
 
@@ -94,7 +124,36 @@ class P6 {
 	}
 
 	class GranaryManager {
+		private Granary granary;
 
+		public GranaryManager() {
+			this.granary = new Granary("穀倉", 9, 600);
+		}
+
+		public synchronized void push(Food supplier) {
+			if (!granary.push(supplier)) {
+				try {
+					wait();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			notify();
+		}
+
+		public synchronized void pop(Consumer consumer) {
+			if (this.granary.isEmpty()) {
+				try {
+					wait();
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			granary.pop(consumer);
+			notify();
+		}
 	}
 
 	class Granary {
@@ -118,7 +177,7 @@ class P6 {
 							if (consumer.getStacks()[idx].anySpace()) {
 								stacks[i].quantity -= consumer.getStacks()[idx].push(stacks[i].quantity,
 										consumer.getStacks()[idx].getMaxSpace());
-								this.refresh(idx);
+								this.refresh(i);
 							}
 						}
 					}
@@ -129,16 +188,17 @@ class P6 {
 
 		// 供貨者放入倉庫,完全放入回傳true,若供貨者尚有貨物則回傳false
 		public boolean push(Food food) {
+			Food myFood = ((Supplier) food).getFood();
 			int idx = 0;
 			while (idx < stacks.length) {
-				if (stacks[idx] != null && food.getName().equalsIgnoreCase(stacks[idx].getName())) {
+				if (stacks[idx] != null && myFood.getName().equalsIgnoreCase(stacks[idx].getName())) {
 					int space = 0;
 					if ((space = anySpace(idx)) > 0) {
-						stacks[idx].quantity += food.pop(space);
+						stacks[idx].quantity += myFood.pop(space);
 					}
 				}
 				idx++;
-				if (food.quantity > 0) {
+				if (myFood.quantity > 0) {
 					continue;
 				} else {
 					break;
@@ -147,9 +207,9 @@ class P6 {
 
 			while (true) {
 				if ((idx = anyEmptyStack()) != -1) {
-					this.stacks[idx] = food.creatNew();
-					stacks[idx].quantity += food.pop(this.maxSpace);
-					if (food.quantity > 0) {
+					this.stacks[idx] = myFood.creatNew();
+					stacks[idx].quantity += myFood.pop(this.maxSpace);
+					if (myFood.quantity > 0) {
 						continue;
 					} else {
 						break;
@@ -158,7 +218,18 @@ class P6 {
 					break;
 				}
 			}
-			return food.quantity == 0;
+			return myFood.quantity == 0;
+		}
+
+		public boolean isEmpty() {
+			int idx = 0;
+			boolean r = false;
+			while (idx < this.stacks.length) {
+				if (this.stacks[idx] != null) {
+					r = true;
+				}
+			}
+			return !r;
 		}
 
 		private void refresh() {
