@@ -1,0 +1,863 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Java RandomAccessFile.seek方法代碼示例 - 純淨天空</title>
+<meta name="description" content="Java RandomAccessFile.seek方法代碼示例，java.io.RandomAccessFile.seek用法" />
+<meta name="keywords" content="java,RandomAccessFile.seek,用法,代碼,示例" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="shortcut icon" href="https://vimsky.com/wp-content/themes/mytux/images/favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" href="https://vimsky.com/wp-content/themes/mytux/style.css" type="text/css" media="screen" />
+<link rel="canonical" href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.seek.html" />
+<!--[if lt IE 9]>
+<script type="text/javascript" src="https://vimsky.com/wp-content/themes/mytux/js/respond.min.js?v=1.4.2"></script>
+<script type="text/javascript" src="https://vimsky.com/wp-content/themes/mytux/js/html5shiv.js?v=html5shiv.js"></script>
+<![endif]-->
+<script type='text/javascript' src='https://vimsky.com/wp-includes/js/jquery/jquery.js?ver=1.12.4'></script>
+<script type="text/javascript" src="https://vimsky.com/wp-content/themes/mytux/js/jquery.examples.core.min.js"></script>
+</head>
+
+<body class="page-template page-template-page-examples page-template-page-examples-php page page-id-4579">
+
+<header id="header">
+    <div class="navtop">
+	<div class="logo"><a href="https://vimsky.com/zh-tw/"><img style="max-height:40px" src="//vimsky.com/wp-content/themes/mytux/images/vimsky-logo.png" alt="純淨天空"/></a></div>
+    <div style="float:left;margin-left:30px"><nav id="navigation"><ul id="nav">
+<li id="menu-item-0" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-0"><a href="https://vimsky.com/zh-tw/">首頁</a></li>
+<li id="menu-item-1" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-1"><a href="https://vimsky.com/zh-tw/category/%e6%8a%80%e6%9c%af%e9%97%ae%e7%ad%94">技術問答</a></li>
+<li id="menu-item-2" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-2"><a href="https://vimsky.com/zh-tw/category/%E6%8A%80%E6%9C%AF%E6%95%99%E7%A8%8B">技術教程</a></li>
+<li id="menu-item-3" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3"><a href="https://vimsky.com/zh-tw/category/%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84">係統&架構</a></li>
+<li id="menu-item-4" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-4"><a href="https://vimsky.com/zh-tw/category/%E7%AE%97%E6%B3%95%E7%BB%93%E6%9E%84">算法&結構</a></li>
+<li id="menu-item-5" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-5"><a href="https://vimsky.com/zh-tw/examples/">編程示例</a></li>
+<li id="menu-item-6" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-6"><a href="https://vimsky.com/zh-tw/info/tools">實用工具</a></li>
+<li id="menu-item-7" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-7"><a href="https://vimsky.com/zh-tw/info/tag-list-001">全部</a></li>
+</ul>
+</nav></div>
+	<div class="search">
+	    <form id="searchform" method="get" action="https://vimsky.com/zh-tw/">
+		    <input type="text" value="" name="s" id="s" size="30" x-webkit-speech />
+			<button type="submit" id="searchsubmit"><i class="iconfont">&#xe610;</i></button>
+		</form>
+	</div>
+	</div>
+</header>
+<section id="content">
+	<div id="main">
+		<!--<div id="posts">-->
+			<div id="article">
+        <p class="mypos"> 當前位置: <a href="https://vimsky.com/zh-tw/" title="首頁">首頁</a>&gt;&gt;<a href="https://vimsky.com/zh-tw/examples/">代碼示例</a>&gt;&gt;<a href="https://vimsky.com/zh-tw/examples/list/java-class-page-1.html">Java</a>&gt;&gt;正文 <hr style="border:1px solid #56bbdc"></p>
+<header><h1 class="mytitle"><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.seek.html">Java RandomAccessFile.seek方法代碼示例</a></h1></header>
+<article class="text"><div>
+<p>本文整理匯總了Java中<strong>java.io.RandomAccessFile.seek<b>方法</b></strong>的典型用法代碼示例。如果您正苦於以下問題：Java RandomAccessFile.seek方法的具體用法？Java RandomAccessFile.seek怎麽用？Java RandomAccessFile.seek使用的例子？那麽恭喜您, 這裏精選的方法代碼示例或許可以為您提供幫助。您也可以進一步了解該方法所在<b>類</b><a href="https://vimsky.com/zh-tw/examples/detail/java-class-java.io.RandomAccessFile.html"<b><code>java.io.RandomAccessFile</code></b></a>的用法示例。</p>
+<p>在下文中一共展示了<strong>RandomAccessFile.seek方法</strong>的20個代碼示例，這些例子默認根據受歡迎程度排序。您可以為喜歡或者感覺有用的代碼點讚，您的評價將有助於我們的係統推薦出更棒的Java代碼示例。</p>
+</div><div>
+<h2>示例1: preloadLineTile</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,0,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_0"> 點讚 3</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,0,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_0"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+@Override
+ public void preloadLineTile(int y, int length,int band) {
+     if (y &lt; 0) {
+         return;
+     }
+     preloadedInterval = new int[]{y, y + length};
+     //positioning in file images y=rows image.xSize=cols 4=numero bytes 
+     int tileOffset =  (y * (getImage(band).getxSize() * 4 ));
+     preloadedData = new byte[(getImage(band).getxSize() * 4) * length];
+     try {
+     	File fimg = getImage(band).getImageFile();
+fss = new RandomAccessFile(fimg.getAbsolutePath(), &quot;r&quot;);
+fss.seek(tileOffset);
+        	fss.read(preloadedData);
+     } catch (IOException ex) {
+     	logger.error(ex.getMessage(),ex);
+     }finally{
+     	try {
+	fss.close();
+} catch (IOException e) {
+	logger.warn(e.getMessage());
+}
+     }
+ }
+ </code></pre></div><div><span>開發者ID:ec-europa，</span><span>項目名稱:sumo，</span><span>代碼行數:25，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2Fec-europa%2Fsumo%2Fblob%2Fmaster%2FGeoImage%2Fsrc%2Fmain%2Fjava%2Forg%2Fgeoimage%2Fimpl%2Fs1%2FSentinel1SLCDebursted.java" target="_blank" rel="nofollow">Sentinel1SLCDebursted.java</a></span></div></div><br><br>
+<div class="content_adsense"><!-- 內容頁頂部原生廣告 --><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:block; text-align:center;"data-ad-layout="in-article"data-ad-format="fluid"data-ad-client="ca-pub-9584489059513758"data-ad-slot="7774727988"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><div>
+<h2>示例2: readState</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,1,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_1"> 點讚 3</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,1,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_1"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+public LockState readState(RandomAccessFile lockFileAccess) throws IOException {
+    try {
+        byte[] buffer = new byte[stateRegionSize];
+        lockFileAccess.seek(REGION_START);
+
+        int readPos = 0;
+        while (readPos &lt; buffer.length) {
+            int nread = lockFileAccess.read(buffer, readPos, buffer.length - readPos);
+            if (nread &lt; 0) {
+                break;
+            }
+            readPos += nread;
+        }
+
+        ByteArrayInputStream inputStream = new ByteArrayInputStream(buffer, 0, readPos);
+        DataInputStream dataInput = new DataInputStream(inputStream);
+
+        byte protocolVersion = dataInput.readByte();
+        if (protocolVersion != protocol.getVersion()) {
+            throw new IllegalStateException(String.format(&quot;Unexpected lock protocol found in lock file. Expected %s, found %s.&quot;, protocol.getVersion(), protocolVersion));
+        }
+        return protocol.read(dataInput);
+    } catch (EOFException e) {
+        return protocol.createInitialState();
+    }
+}
+ </code></pre></div><div><span>開發者ID:lxxlxx888，</span><span>項目名稱:Reer，</span><span>代碼行數:27，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2Flxxlxx888%2FReer%2Fblob%2Fmaster%2Fgradle%2Fwrapper%2Fgradle-3.3%2Fsrc%2Fcore%2Forg%2Fgradle%2Fcache%2Finternal%2Ffilelock%2FLockStateAccess.java" target="_blank" rel="nofollow">LockStateAccess.java</a></span></div></div><br><br>
+<div>
+<h2>示例3: shortSummarizeOggPageHeaders</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,2,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_2"> 點讚 3</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,2,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_2"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+/**
+ * Summarizes the first five pages, normally all we are interested in
+ *
+ * @param oggFile
+ * @throws CannotReadException
+ * @throws IOException
+ */
+public void shortSummarizeOggPageHeaders(File oggFile) throws CannotReadException, IOException {
+    RandomAccessFile raf = new RandomAccessFile(oggFile, &quot;r&quot;);
+
+    int i = 0;
+    while (raf.getFilePointer() &lt; raf.length()) {
+        System.out.println(&quot;pageHeader starts at absolute file position:&quot; + raf.getFilePointer());
+        OggPageHeader pageHeader = OggPageHeader.read(raf);
+        System.out.println(&quot;pageHeader finishes at absolute file position:&quot; + raf.getFilePointer());
+        System.out.println(pageHeader + &quot;\n&quot;);
+        raf.seek(raf.getFilePointer() + pageHeader.getPageLength());
+        i++;
+        if (i &gt;= 5) {
+            break;
+        }
+    }
+    System.out.println(&quot;Raf File Pointer at:&quot; + raf.getFilePointer() + &quot;File Size is:&quot; + raf.length());
+    raf.close();
+}
+ </code></pre></div><div><span>開發者ID:openaudible，</span><span>項目名稱:openaudible，</span><span>代碼行數:26，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2Fopenaudible%2Fopenaudible%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2Forg%2Fjaudiotagger%2Faudio%2Fogg%2FOggFileReader.java" target="_blank" rel="nofollow">OggFileReader.java</a></span></div></div><br><br>
+<div class="content_adsense"><!-- 內容頁頂部原生廣告 --><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:block; text-align:center;"data-ad-layout="in-article"data-ad-format="fluid"data-ad-client="ca-pub-9584489059513758"data-ad-slot="7774727988"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><div>
+<h2>示例4: setOffsetFromFile</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,3,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_3"> 點讚 3</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,3,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_3"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+public void setOffsetFromFile(RandomAccessFile f, ByteBuffer buf) throws IOException {
+    long localHdrOffset = mLocalHdrOffset;
+    try {
+        f.seek(localHdrOffset);
+        f.readFully(buf.array());
+        if (buf.getInt(0) != kLFHSignature) {
+            Log.w(LOG_TAG, &quot;didn't find signature at start of lfh&quot;);
+            throw new IOException();
+        }
+        int nameLen = buf.getShort(kLFHNameLen) &amp; 0xFFFF;
+        int extraLen = buf.getShort(kLFHExtraLen) &amp; 0xFFFF;
+        mOffset = localHdrOffset + kLFHLen + nameLen + extraLen;
+    } catch (FileNotFoundException e) {
+        e.printStackTrace();
+    } catch (IOException ioe) {
+        ioe.printStackTrace();
+    }
+}
+ </code></pre></div><div><span>開發者ID:SlotNSlot，</span><span>項目名稱:SlotNSlot_Android，</span><span>代碼行數:19，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2FSlotNSlot%2FSlotNSlot_Android%2Fblob%2Fmaster%2Fzip_file%2Fsrc%2Fmain%2Fjava%2Fcom%2Fandroid%2Fvending%2Fexpansion%2Fzipfile%2FZipResourceFile.java" target="_blank" rel="nofollow">ZipResourceFile.java</a></span></div></div><br><br>
+<div>
+<h2>示例5: revertBuffer</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,4,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_4"> 點讚 3</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,4,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_4"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+LongBuffer revertBuffer() throws IOException {
+    LongBuffer reverted = new LongBuffer(buffer.length);
+    
+    if (bufferSize &lt; buffer.length) {
+        for (int i=0;i&lt;bufferSize;i++) {
+            reverted.writeLong(buffer[bufferSize - 1 - i]);
+        }
+    } else {
+        writeStream.flush();
+        RandomAccessFile raf = new RandomAccessFile(backingFile,&quot;r&quot;);
+        long offset = raf.length();
+        while(offset &gt; 0) {
+            offset-=8;
+            raf.seek(offset);
+            reverted.writeLong(raf.readLong());
+        }
+    }
+    reverted.startReading();
+    return reverted;
+}
+ </code></pre></div><div><span>開發者ID:apache，</span><span>項目名稱:incubator-netbeans，</span><span>代碼行數:21，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2Fapache%2Fincubator-netbeans%2Fblob%2Fmaster%2Flib.profiler%2Fsrc%2Forg%2Fnetbeans%2Flib%2Fprofiler%2Fheap%2FLongBuffer.java" target="_blank" rel="nofollow">LongBuffer.java</a></span></div></div><br><br>
+<div class="content_adsense"><!-- 內容頁頂部原生廣告 --><script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script><ins class="adsbygoogle"style="display:block; text-align:center;"data-ad-layout="in-article"data-ad-format="fluid"data-ad-client="ca-pub-9584489059513758"data-ad-slot="7774727988"></ins><script>(adsbygoogle = window.adsbygoogle || []).push({});</script></div><div>
+<h2>示例6: open</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,5,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_5"> 點讚 3</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,5,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_5"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+@Override
+public long open(DataSpec dataSpec) throws FileDataSourceException {
+  try {
+    uriString = dataSpec.uri.toString();
+    file = new RandomAccessFile(dataSpec.uri.getPath(), &quot;r&quot;);
+    file.seek(dataSpec.position);
+    bytesRemaining = dataSpec.length == C.LENGTH_UNBOUNDED ? file.length() - dataSpec.position
+        : dataSpec.length;
+    if (bytesRemaining &lt; 0) {
+      throw new EOFException();
+    }
+  } catch (IOException e) {
+    throw new FileDataSourceException(e);
+  }
+
+  opened = true;
+  if (listener != null) {
+    listener.onTransferStart();
+  }
+
+  return bytesRemaining;
+}
+ </code></pre></div><div><span>開發者ID:MLNO，</span><span>項目名稱:airgram，</span><span>代碼行數:23，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2FMLNO%2Fairgram%2Fblob%2Fmaster%2FTMessagesProj%2Fsrc%2Fmain%2Fjava%2Fir%2Fhamzad%2Ftelegram%2Fexoplayer%2Fupstream%2FFileDataSource.java" target="_blank" rel="nofollow">FileDataSource.java</a></span></div></div><br><br>
+<div>
+<h2>示例7: isValidSnapshot</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,6,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_6"> 點讚 2</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,6,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_6"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+/**
+ * Verifies that the file is a valid snapshot. Snapshot may be invalid if 
+ * it's incomplete as in a situation when the server dies while in the process
+ * of storing a snapshot. Any file that is not a snapshot is also 
+ * an invalid snapshot. 
+ * 
+ * @param f file to verify
+ * @return true if the snapshot is valid
+ * @throws IOException
+ */
+public static boolean isValidSnapshot(File f) throws IOException {
+    if (f==null || Util.getZxidFromName(f.getName(), &quot;snapshot&quot;) == -1)
+        return false;
+
+    // Check for a valid snapshot
+    RandomAccessFile raf = new RandomAccessFile(f, &quot;r&quot;);
+    try {
+        // including the header and the last / bytes
+        // the snapshot should be atleast 10 bytes
+        if (raf.length() &lt; 10) {
+            return false;
+        }
+        raf.seek(raf.length() - 5);
+        byte bytes[] = new byte[5];
+        int readlen = 0;
+        int l;
+        while(readlen &lt; 5 &amp;&amp;
+              (l = raf.read(bytes, readlen, bytes.length - readlen)) &gt;= 0) {
+            readlen += l;
+        }
+        if (readlen != bytes.length) {
+            LOG.info(&quot;Invalid snapshot &quot; + f
+                    + &quot; too short, len = &quot; + readlen);
+            return false;
+        }
+        ByteBuffer bb = ByteBuffer.wrap(bytes);
+        int len = bb.getInt();
+        byte b = bb.get();
+        if (len != 1 || b != '/') {
+            LOG.info(&quot;Invalid snapshot &quot; + f + &quot; len = &quot; + len
+                    + &quot; byte = &quot; + (b &amp; 0xff));
+            return false;
+        }
+    } finally {
+        raf.close();
+    }
+
+    return true;
+}
+ </code></pre></div><div><span>開發者ID:l294265421，</span><span>項目名稱:ZooKeeper，</span><span>代碼行數:50，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2Fl294265421%2FZooKeeper%2Fblob%2Fmaster%2Fsrc%2Fjava%2Fmain%2Forg%2Fapache%2Fzookeeper%2Fserver%2Fpersistence%2FUtil.java" target="_blank" rel="nofollow">Util.java</a></span></div></div><br><br>
+<div>
+<h2>示例8: copy</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,7,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_7"> 點讚 2</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,7,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_7"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+private int copy(InputStream in, RandomAccessFile out) throws IOException, UpdateError {
+
+        byte[] buffer = new byte[BUFFER_SIZE];
+        BufferedInputStream bis = new BufferedInputStream(in, BUFFER_SIZE);
+        try {
+
+            out.seek(out.length());
+
+            int bytes = 0;
+            long previousBlockTime = -1;
+
+            while (!isCancelled()) {
+                int n = bis.read(buffer, 0, BUFFER_SIZE);
+                if (n == -1) {
+                    break;
+                }
+                out.write(buffer, 0, n);
+                bytes += n;
+
+                checkNetwork();
+
+                if (mSpeed != 0) {
+                    previousBlockTime = -1;
+                } else if (previousBlockTime == -1) {
+                    previousBlockTime = System.currentTimeMillis();
+                } else if ((System.currentTimeMillis() - previousBlockTime) &gt; TIME_OUT) {
+                    throw new UpdateError(UpdateError.DOWNLOAD_NETWORK_TIMEOUT);
+                }
+            }
+            return bytes;
+        } finally {
+            out.close();
+            bis.close();
+            in.close();
+        }
+    }
+ </code></pre></div><div><span>開發者ID:yufeilong92，</span><span>項目名稱:update-master，</span><span>代碼行數:37，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2Fyufeilong92%2Fupdate-master%2Fblob%2Fmaster%2Flibrary%2Fsrc%2Fmain%2Fjava%2Fezy%2Fboost%2Fupdate%2FUpdateDownloader.java" target="_blank" rel="nofollow">UpdateDownloader.java</a></span></div></div><br><br>
+<div>
+<h2>示例9: readByte</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,8,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_8"> 點讚 2</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,8,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_8"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+private int readByte( final RandomAccessFile file, final long position )
+{
+    try
+    {
+        file.seek( position );
+        return file.readByte();
+    }
+    catch ( IOException e )
+    {
+        return -1;
+    }
+}
+ </code></pre></div><div><span>開發者ID:aro，</span><span>項目名稱:app-logbrowser，</span><span>代碼行數:13，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2Faro%2Fapp-logbrowser%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2Fcom%2Fenonic%2Fapp%2Flogbrowser%2FLogFileHandler.java" target="_blank" rel="nofollow">LogFileHandler.java</a></span></div></div><br><br>
+<div>
+<h2>示例10: readLockInfo</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,9,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_9"> 點讚 2</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,9,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_9"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+public LockInfo readLockInfo(RandomAccessFile lockFileAccess) throws IOException {
+    if (lockFileAccess.length() &lt;= infoRegionPos) {
+        return new LockInfo();
+    } else {
+        lockFileAccess.seek(infoRegionPos);
+
+        DataInputStream inputStream = new DataInputStream(new BufferedInputStream(new RandomAccessFileInputStream(lockFileAccess)));
+        byte protocolVersion = inputStream.readByte();
+        if (protocolVersion != lockInfoSerializer.getVersion()) {
+            throw new IllegalStateException(String.format(&quot;Unexpected lock protocol found in lock file. Expected %s, found %s.&quot;, lockInfoSerializer.getVersion(), protocolVersion));
+        }
+
+        return lockInfoSerializer.read(inputStream);
+    }
+}
+ </code></pre></div><div><span>開發者ID:lxxlxx888，</span><span>項目名稱:Reer，</span><span>代碼行數:16，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2Flxxlxx888%2FReer%2Fblob%2Fmaster%2Fgradle%2Fwrapper%2Fgradle-3.3%2Fsrc%2Fcore%2Forg%2Fgradle%2Fcache%2Finternal%2Ffilelock%2FLockInfoAccess.java" target="_blank" rel="nofollow">LockInfoAccess.java</a></span></div></div><br><br>
+<div>
+<h2>示例11: doTestBadCheckpointVersion</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,10,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_10"> 點讚 2</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,10,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_10"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+private void doTestBadCheckpointVersion(boolean backup) throws Exception {
+  Map&lt;String, String&gt; overrides = Maps.newHashMap();
+  overrides.put(FileChannelConfiguration.USE_DUAL_CHECKPOINTS, String.valueOf(backup));
+  channel = createFileChannel(overrides);
+  channel.start();
+  Assert.assertTrue(channel.isOpen());
+  Set&lt;String&gt; in = putEvents(channel, &quot;restart&quot;, 10, 100);
+  Assert.assertEquals(100, in.size());
+  forceCheckpoint(channel);
+  if (backup) {
+    Thread.sleep(2000);
+  }
+  channel.stop();
+  File checkpoint = new File(checkpointDir, &quot;checkpoint&quot;);
+  RandomAccessFile writer = new RandomAccessFile(checkpoint, &quot;rw&quot;);
+  writer.seek(EventQueueBackingStoreFile.INDEX_VERSION *
+              Serialization.SIZE_OF_LONG);
+  writer.writeLong(2L);
+  writer.getFD().sync();
+  writer.close();
+  channel = createFileChannel(overrides);
+  channel.start();
+  Assert.assertTrue(channel.isOpen());
+  Assert.assertTrue(!backup || channel.checkpointBackupRestored());
+  Set&lt;String&gt; out = consumeChannel(channel);
+  compareInputAndOut(in, out);
+}
+ </code></pre></div><div><span>開發者ID:moueimei，</span><span>項目名稱:flume-release-1.7.0，</span><span>代碼行數:28，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2Fmoueimei%2Fflume-release-1.7.0%2Fblob%2Fmaster%2Fflume-ng-channels%2Fflume-file-channel%2Fsrc%2Ftest%2Fjava%2Forg%2Fapache%2Fflume%2Fchannel%2Ffile%2FTestFileChannelRestart.java" target="_blank" rel="nofollow">TestFileChannelRestart.java</a></span></div></div><br><br>
+<div>
+<h2>示例12: testValidateEditLogWithCorruptHeader</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,11,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_11"> 點讚 2</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,11,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_11"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+@Test
+public void testValidateEditLogWithCorruptHeader() throws IOException {
+  File testDir = new File(TEST_DIR, &quot;testValidateEditLogWithCorruptHeader&quot;);
+  SortedMap&lt;Long, Long&gt; offsetToTxId = Maps.newTreeMap();
+  File logFile = prepareUnfinalizedTestEditLog(testDir, 2, offsetToTxId);
+  RandomAccessFile rwf = new RandomAccessFile(logFile, &quot;rw&quot;);
+  try {
+    rwf.seek(0);
+    rwf.writeLong(42); // corrupt header
+  } finally {
+    rwf.close();
+  }
+  EditLogValidation validation = EditLogFileInputStream.validateEditLog(logFile);
+  assertTrue(validation.hasCorruptHeader());
+}
+ </code></pre></div><div><span>開發者ID:naver，</span><span>項目名稱:hadoop，</span><span>代碼行數:16，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2Fnaver%2Fhadoop%2Fblob%2Fmaster%2Fhadoop-hdfs-project%2Fhadoop-hdfs%2Fsrc%2Ftest%2Fjava%2Forg%2Fapache%2Fhadoop%2Fhdfs%2Fserver%2Fnamenode%2FTestFSEditLogLoader.java" target="_blank" rel="nofollow">TestFSEditLogLoader.java</a></span></div></div><br><br>
+<div>
+<h2>示例13: a</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,12,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_12"> 點讚 2</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,12,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_12"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+private static byte[] a(RandomAccessFile randomAccessFile) throws IOException {
+    int i = 1;
+    long length = randomAccessFile.length() - 22;
+    randomAccessFile.seek(length);
+    byte[] bytes = a.getBytes();
+    byte read = randomAccessFile.read();
+    while (read != (byte) -1) {
+        if (read == bytes[0] &amp;&amp; randomAccessFile.read() == bytes[1] &amp;&amp; randomAccessFile.read() == bytes[2] &amp;&amp; randomAccessFile.read() == bytes[3]) {
+            break;
+        }
+        length--;
+        randomAccessFile.seek(length);
+        read = randomAccessFile.read();
+    }
+    i = 0;
+    if (i == 0) {
+        throw new ZipException(&quot;archive is not a ZIP archive&quot;);
+    }
+    randomAccessFile.seek((16 + length) + 4);
+    byte[] bArr = new byte[2];
+    randomAccessFile.readFully(bArr);
+    i = new ZipShort(bArr).getValue();
+    if (i == 0) {
+        return null;
+    }
+    bArr = new byte[i];
+    randomAccessFile.read(bArr);
+    return bArr;
+}
+ </code></pre></div><div><span>開發者ID:JackChan1999，</span><span>項目名稱:letv，</span><span>代碼行數:30，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2FJackChan1999%2Fletv%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2Fcom%2Ftencent%2Fopen%2Futils%2FApkExternalInfoTool.java" target="_blank" rel="nofollow">ApkExternalInfoTool.java</a></span></div></div><br><br>
+<div>
+<h2>示例14: testWriteFully</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,13,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_13"> 點讚 2</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,13,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_13"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+@Test
+public void testWriteFully() throws IOException {
+  final int INPUT_BUFFER_LEN = 10000;
+  final int HALFWAY = 1 + (INPUT_BUFFER_LEN / 2);
+  byte[] input = new byte[INPUT_BUFFER_LEN];
+  for (int i = 0; i &lt; input.length; i++) {
+    input[i] = (byte)(i &amp; 0xff);
+  }
+  byte[] output = new byte[input.length];
+  
+  try {
+    RandomAccessFile raf = new RandomAccessFile(TEST_FILE_NAME, &quot;rw&quot;);
+    FileChannel fc = raf.getChannel();
+    ByteBuffer buf = ByteBuffer.wrap(input);
+    IOUtils.writeFully(fc, buf);
+    raf.seek(0);
+    raf.read(output);
+    for (int i = 0; i &lt; input.length; i++) {
+      assertEquals(input[i], output[i]);
+    }
+    buf.rewind();
+    IOUtils.writeFully(fc, buf, HALFWAY);
+    for (int i = 0; i &lt; HALFWAY; i++) {
+      assertEquals(input[i], output[i]);
+    }
+    raf.seek(0);
+    raf.read(output);
+    for (int i = HALFWAY; i &lt; input.length; i++) {
+      assertEquals(input[i - HALFWAY], output[i]);
+    }
+  } finally {
+    File f = new File(TEST_FILE_NAME);
+    if (f.exists()) {
+      f.delete();
+    }
+  }
+}
+ </code></pre></div><div><span>開發者ID:naver，</span><span>項目名稱:hadoop，</span><span>代碼行數:38，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2Fnaver%2Fhadoop%2Fblob%2Fmaster%2Fhadoop-common-project%2Fhadoop-common%2Fsrc%2Ftest%2Fjava%2Forg%2Fapache%2Fhadoop%2Fio%2FTestIOUtils.java" target="_blank" rel="nofollow">TestIOUtils.java</a></span></div></div><br><br>
+<div>
+<h2>示例15: createInputStream</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,14,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_14"> 點讚 2</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,14,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_14"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+@Override
+public InputStream createInputStream (long offset) throws IOException
+{
+   File file = new File(product.getDownloadablePath());
+   if (!doesExist())
+   {
+       throw new IOException(&quot;No read permission : &quot; + file.getName());
+   }
+
+   // move to the appropriate offset and create input stream
+   final RandomAccessFile raf = new RandomAccessFile(file, &quot;r&quot;);
+   try
+   {
+      raf.seek(offset);
+      // The IBM jre needs to have both the stream and the random access file
+      // objects closed to actually close the file
+      return new RegulatedInputStream.Builder (new FileInputStream (
+            raf.getFD())
+      {
+         public void close() throws IOException
+         {
+            super.close();
+            raf.close();
+         }
+      }, TrafficDirection.OUTBOUND).userName(super.user.getUsername ()).
+      copyStreamListener (
+            new DownloadActionRecordListener (
+         product.getUuid(), product.getIdentifier(), super.user)).
+         streamSize(raf.length()).build ();
+   }
+   catch (IOException e)
+   {
+      raf.close();
+      throw e;
+   }
+}
+ </code></pre></div><div><span>開發者ID:SentinelDataHub，</span><span>項目名稱:dhus-core，</span><span>代碼行數:37，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2FSentinelDataHub%2Fdhus-core%2Fblob%2Fmaster%2Fcore%2Fsrc%2Fmain%2Fjava%2Ffr%2Fgael%2Fdhus%2Fserver%2Fftp%2FFtpProductFile.java" target="_blank" rel="nofollow">FtpProductFile.java</a></span></div></div><br><br>
+<div>
+<h2>示例16: WriterAdapter</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,15,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_15"> 點讚 2</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,15,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_15"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+public WriterAdapter(final File file,
+                     final long pos)
+                     throws FileNotFoundException, IOException {
+
+    if (file == null) {
+        throw new NullPointerException(&quot;file&quot;);
+    }
+
+    if (pos &lt; 0) {
+        throw new IllegalArgumentException(&quot;pos: &quot; + pos);
+    }
+
+    ReaderAdapter reader = null;
+    long          filePointer;
+
+    try {
+        reader      = new ReaderAdapter(file, pos, Long.MAX_VALUE);
+        filePointer = reader.getFilePointer();
+    } finally {
+        if (reader != null) {
+            try {
+                reader.close();
+            } catch (Exception ex) {}
+        }
+    }
+
+    m_randomAccessFile = new RandomAccessFile(file, &quot;rw&quot;);
+
+    m_randomAccessFile.seek(filePointer);
+}
+ </code></pre></div><div><span>開發者ID:Julien35，</span><span>項目名稱:dev-courses，</span><span>代碼行數:31，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2FJulien35%2Fdev-courses%2Fblob%2Fmaster%2Ftutoriel-spring-mvc%2Flib%2Fhsqldb%2Fsrc%2Forg%2Fhsqldb%2Fjdbc%2FJDBCClobFile.java" target="_blank" rel="nofollow">JDBCClobFile.java</a></span></div></div><br><br>
+<div>
+<h2>示例17: main</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,16,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_16"> 點讚 2</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,16,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_16"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+public static void main(String[] args) throws Exception {
+
+        show(nonExistantFile);
+        if (nonExistantFile.exists()) fail(nonExistantFile, &quot;exists&quot;);
+
+        show(rwFile);
+        testFile(rwFile, true, 6);
+        rwFile.delete();
+        if (rwFile.exists())
+            fail(rwFile, &quot;could not delete&quot;);
+
+        show(roFile);
+        testFile(roFile, false, 0);
+
+        show(thisDir);
+        if (!thisDir.exists()) fail(thisDir, &quot;does not exist&quot;);
+        if (thisDir.isFile()) fail(thisDir, &quot;is a file&quot;);
+        if (!thisDir.isDirectory()) fail(thisDir, &quot;is not a directory&quot;);
+        if (!thisDir.canRead()) fail(thisDir, &quot;is readable&quot;);
+        if (!thisDir.canWrite()) fail(thisDir, &quot;is writeable&quot;);
+        String[] fs = thisDir.list();
+        if (fs == null) fail(thisDir, &quot;list() returned null&quot;);
+        out.print(&quot;  [&quot; + fs.length + &quot;]&quot;);
+        for (int i = 0; i &lt; fs.length; i++)
+            out.print(&quot; &quot; + fs[i]);
+        out.println();
+        if (fs.length == 0) fail(thisDir, &quot;is empty&quot;);
+
+        if (!nonExistantFile.createNewFile())
+            fail(nonExistantFile, &quot;could not create&quot;);
+        nonExistantFile.deleteOnExit();
+
+        if (!nonDir.mkdir())
+            fail(nonDir, &quot;could not create&quot;);
+
+        if (!dir.renameTo(new File(&quot;x.Basic.dir2&quot;)))
+            fail(dir, &quot;failed to rename&quot;);
+
+        if (System.getProperty(&quot;os.name&quot;).equals(&quot;SunOS&quot;)
+            &amp;&amp; System.getProperty(&quot;os.version&quot;).compareTo(&quot;5.6&quot;) &gt;= 0) {
+            if (bigFile.exists()) {
+                bigFile.delete();
+                if (bigFile.exists())
+                    fail(bigFile, &quot;could not delete&quot;);
+            }
+            RandomAccessFile raf = new RandomAccessFile(bigFile, &quot;rw&quot;);
+            long big = ((long)Integer.MAX_VALUE) * 2;
+            try {
+                raf.seek(big);
+                raf.write('x');
+                show(bigFile);
+                testFile(bigFile, true, big + 1);
+            } finally {
+                raf.close();
+            }
+            bigFile.delete();
+            if (bigFile.exists())
+                fail(bigFile, &quot;could not delete&quot;);
+        } else {
+            System.err.println(&quot;NOTE: Large files not supported on this system&quot;);
+        }
+
+    }
+ </code></pre></div><div><span>開發者ID:lambdalab-mirror，</span><span>項目名稱:jdk8u-jdk，</span><span>代碼行數:64，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2Flambdalab-mirror%2Fjdk8u-jdk%2Fblob%2Fmaster%2Ftest%2Fjava%2Fio%2FFile%2FBasic.java" target="_blank" rel="nofollow">Basic.java</a></span></div></div><br><br>
+<div>
+<h2>示例18: getFile</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,17,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_17"> 點讚 2</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,17,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_17"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+protected RandomAccessFile getFile(File dir, String name, long offset) throws IOException {
+    RandomAccessFile raf = new RandomAccessFile(new File(dir, name), &quot;rwd&quot;);
+    raf.seek(0);
+    return raf;
+}
+ </code></pre></div><div><span>開發者ID:JackChan1999，</span><span>項目名稱:boohee_v5.6，</span><span>代碼行數:6，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2FJackChan1999%2Fboohee_v5.6%2Fblob%2Fmaster%2Fsrc%2Fmain%2Fjava%2Fcom%2Faspsine%2Fmultithreaddownload%2Fcore%2FSingleDownloadTask.java" target="_blank" rel="nofollow">SingleDownloadTask.java</a></span></div></div><br><br>
+<div>
+<h2>示例19: readArmAttributes</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,18,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_18"> 點讚 2</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,18,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_18"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+private static boolean readArmAttributes(RandomAccessFile in, ElfData elf) throws IOException {
+    byte[] bytes = new byte[elf.sh_size];
+    in.seek(elf.sh_offset);
+    in.readFully(bytes);
+
+    // wrap bytes in a ByteBuffer to force endianess
+    ByteBuffer buffer = ByteBuffer.wrap(bytes);
+    buffer.order(elf.order);
+
+    //http://infocenter.arm.com/help/topic/com.arm.doc.ihi0044e/IHI0044E_aaelf.pdf
+    //http://infocenter.arm.com/help/topic/com.arm.doc.ihi0045d/IHI0045D_ABI_addenda.pdf
+    if (buffer.get() != 'A') // format-version
+        return false;
+
+    // sub-sections loop
+    while (buffer.remaining() &gt; 0) {
+        int start_section = buffer.position();
+        int length = buffer.getInt();
+        String vendor = getString(buffer);
+        if (vendor.equals(&quot;aeabi&quot;)) {
+            // tags loop
+            while (buffer.position() &lt; start_section + length) {
+                int start = buffer.position();
+                int tag = buffer.get();
+                int size = buffer.getInt();
+                // skip if not Tag_File, we don't care about others
+                if (tag != 1) {
+                    buffer.position(start + size);
+                    continue;
+                }
+
+                // attributes loop
+                while (buffer.position() &lt; start + size) {
+                    tag = getUleb128(buffer);
+                    if (tag == 6) { // CPU_arch
+                        int arch = getUleb128(buffer);
+                        elf.att_arch = CPU_archs[arch];
+                    } else if (tag == 27) { // ABI_HardFP_use
+                        getUleb128(buffer);
+                        elf.att_fpu = true;
+                    } else {
+                        // string for 4=CPU_raw_name / 5=CPU_name / 32=compatibility
+                        // string for &gt;32 &amp;&amp; odd tags
+                        // uleb128 for other
+                        tag %= 128;
+                        if (tag == 4 || tag == 5 || tag == 32 || (tag &gt; 32 &amp;&amp; (tag &amp; 1) != 0))
+                            getString(buffer);
+                        else
+                            getUleb128(buffer);
+                    }
+                }
+            }
+            break;
+        }
+    }
+    return true;
+}
+ </code></pre></div><div><span>開發者ID:pedroSG94，</span><span>項目名稱:vlc-example-streamplayer，</span><span>代碼行數:58，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2FpedroSG94%2Fvlc-example-streamplayer%2Fblob%2Fmaster%2Flibvlc%2Fsrc%2Fmain%2Fjava%2Forg%2Fvideolan%2Flibvlc%2Futil%2FVLCUtil.java" target="_blank" rel="nofollow">VLCUtil.java</a></span></div></div><br><br>
+<div>
+<h2>示例20: parseHit</h2>
+<div><span><button type="button" class="voteButton VoteButton--up" onclick="javascript:userlike(this, 7429,19,1);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleUp VoteButton-TriangleUp" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M2 18.242c0-.326.088-.532.237-.896l7.98-13.203C10.572 3.57 11.086 3 12 3c.915 0 1.429.571 1.784 1.143l7.98 13.203c.15.364.236.57.236.896 0 1.386-.875 1.9-1.955 1.9H3.955c-1.08 0-1.955-.517-1.955-1.9z" fill-rule="evenodd"></path></svg></span><span id="vote_19"> 點讚 1</span></button>
+<button title="取消點讚" type="button" class="voteButton VoteButton--down" onclick="javascript:userlike(this, 7429,19,2);"><span style="display:inline-flex;align-items:center">&#8203;<svg class="Zi Zi--TriangleDown" fill="currentColor" viewBox="0 0 24 24" width="10" height="10"><path d="M20.044 3H3.956C2.876 3 2 3.517 2 4.9c0 .326.087.533.236.896L10.216 19c.355.571.87 1.143 1.784 1.143s1.429-.572 1.784-1.143l7.98-13.204c.149-.363.236-.57.236-.896 0-1.386-.876-1.9-1.956-1.9z" fill-rule="evenodd"></path></svg></span></button></span><span id="vote_status_19"><span></div>
+<div><pre><code class="java">import java.io.RandomAccessFile; //導入方法依賴的package包/類
+public DAA_Hit parseHit(RandomAccessFile raf, long filePointer, int accessPoint) {
+
+		DAA_Hit hit = null;
+
+		try {
+
+			raf.seek(filePointer);
+
+			ByteBuffer buffer = ByteBuffer.allocate(4);
+			buffer.order(ByteOrder.LITTLE_ENDIAN);
+			raf.read(buffer.array());
+			int alloc = buffer.getInt();
+
+			ByteBuffer hitBuffer = ByteBuffer.allocate(alloc);
+			hitBuffer.order(ByteOrder.LITTLE_ENDIAN);
+			raf.read(hitBuffer.array());
+
+			// parsing query properties
+			hit = new DAA_Hit();
+			hit.parseQueryProperties(filePointer, hitBuffer, true, false);
+
+			hitBuffer.position(accessPoint);
+
+			// parsing match properties
+			hit.parseHitProperties(header, hitBuffer, true);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return hit;
+
+	}
+ </code></pre></div><div><span>開發者ID:BenjaminAlbrecht84，</span><span>項目名稱:DAA_Converter，</span><span>代碼行數:34，</span><span>代碼來源:<a href="https://vimsky.com/cache/index.php?source=https%3A%2F%2Fgithub.com%2FBenjaminAlbrecht84%2FDAA_Converter%2Fblob%2Fmaster%2Fsrc%2Fdaa%2Freader%2FDAA_Reader.java" target="_blank" rel="nofollow">DAA_Reader.java</a></span></div></div><br><br>
+<div><br>
+<p>注：<a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.seek.html">本文</a>中的<strong>java.io.RandomAccessFile.seek方法</strong>示例整理自Github/MSDocs等源碼及文檔管理平台，相關代碼片段篩選自各路編程大神貢獻的開源項目，源碼版權歸原作者所有，傳播和使用請參考對應項目的<b>License</b>；未經允許，請勿轉載。</p></div>
+</article>
+<script type="text/javascript">
+jQuery(function ($) {$('pre').highlight("seek", {caseSensitive:true});})</script>
+		</div>
+	<!--</div>-->
+    </div>
+	<aside id="sidebar">
+    <div class="widget widget_text" id="text-17">			<div class="textwidget"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 邊欄300x600廣告 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:600px"
+     data-ad-client="ca-pub-9584489059513758"
+     data-ad-slot="1399774028"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+		</div><div class="widget widget_tux_relative_method_tab" id="tux_relative_method_tab-2">            <div class="tab_header">
+            <h3>相關方法</h3>
+            </div>
+            <div class="tab_content tab_content2" style="clear:both;">
+            <ul>
+            <li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.close.html" title="RandomAccessFile.close( )">RandomAccessFile.close( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.seek.html" title="RandomAccessFile.seek( )">RandomAccessFile.seek( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.write.html" title="RandomAccessFile.write( )">RandomAccessFile.write( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.length.html" title="RandomAccessFile.length( )">RandomAccessFile.length( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.read.html" title="RandomAccessFile.read( )">RandomAccessFile.read( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.getChannel.html" title="RandomAccessFile.getChannel( )">RandomAccessFile.getChannel( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.setLength.html" title="RandomAccessFile.setLength( )">RandomAccessFile.setLength( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.readFully.html" title="RandomAccessFile.readFully( )">RandomAccessFile.readFully( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.getFilePointer.html" title="RandomAccessFile.getFilePointer( )">RandomAccessFile.getFilePointer( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.readInt.html" title="RandomAccessFile.readInt( )">RandomAccessFile.readInt( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.writeInt.html" title="RandomAccessFile.writeInt( )">RandomAccessFile.writeInt( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.skipBytes.html" title="RandomAccessFile.skipBytes( )">RandomAccessFile.skipBytes( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.readLine.html" title="RandomAccessFile.readLine( )">RandomAccessFile.readLine( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.getFD.html" title="RandomAccessFile.getFD( )">RandomAccessFile.getFD( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.writeBytes.html" title="RandomAccessFile.writeBytes( )">RandomAccessFile.writeBytes( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.readByte.html" title="RandomAccessFile.readByte( )">RandomAccessFile.readByte( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.writeByte.html" title="RandomAccessFile.writeByte( )">RandomAccessFile.writeByte( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.writeLong.html" title="RandomAccessFile.writeLong( )">RandomAccessFile.writeLong( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.writeShort.html" title="RandomAccessFile.writeShort( )">RandomAccessFile.writeShort( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.readLong.html" title="RandomAccessFile.readLong( )">RandomAccessFile.readLong( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.writeChars.html" title="RandomAccessFile.writeChars( )">RandomAccessFile.writeChars( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.writeUTF.html" title="RandomAccessFile.writeUTF( )">RandomAccessFile.writeUTF( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.readUTF.html" title="RandomAccessFile.readUTF( )">RandomAccessFile.readUTF( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.readBoolean.html" title="RandomAccessFile.readBoolean( )">RandomAccessFile.readBoolean( )</a></li>
+<li><a href="https://vimsky.com/zh-tw/examples/detail/java-method-java.io.RandomAccessFile.writeBoolean.html" title="RandomAccessFile.writeBoolean( )">RandomAccessFile.writeBoolean( )</a></li>
+            </ul>
+            </div>
+</div><div class="widget widget_text" id="text-18">			<div class="textwidget"><script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- 邊欄300x600廣告 -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:300px;height:600px"
+     data-ad-client="ca-pub-9584489059513758"
+     data-ad-slot="1399774028"></ins>
+<script>
+     (adsbygoogle = window.adsbygoogle || []).push({});
+</script></div>
+		</div></aside>
+</section>
+<footer id="footer">
+<center>
+
+<div class="crblock">
+<span>&copy;2008-2021</span>&nbsp;|&nbsp;<a href="https://vimsky.com/zh-tw/"><span>純淨天空</span></a>
+&nbsp;|&nbsp;
+<a href="/">簡體</a>
+&nbsp;|&nbsp;
+<a href="/zh-tw/">繁體</a>
+&nbsp;|&nbsp;
+<!--<a href='https://vimsky.com/zh-tw/info/tag-list-001' target="_blank">網站導航</a>&nbsp;|&nbsp;-->
+<a href="https://vimsky.com/zh-tw/info/contact" target="_blank">聯係我們</a>
+&nbsp;|&nbsp;
+京ICP備15018527號-1
+&nbsp;|&nbsp;
+<a href="https://vimsky.com/zh-tw/info/sponsor" target="_blank">讚助商</a>
+&nbsp;|&nbsp;
+<script async type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1254708114'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s95.cnzz.com/z_stat.php%3Fid%3D1254708114' type='text/javascript'%3E%3C/script%3E"));</script>
+</div>
+
+</center>
+</footer>
+<link rel='stylesheet' id='hljstheme-css'  href='https://vimsky.com/wp-content/plugins/wp-code-highlightjs/styles/xcode.css?ver=0.6.2' type='text/css' media='all' />
+<script type='text/javascript'>
+/* <![CDATA[ */
+var q2w3_sidebar_options = [{"sidebar":"sidebar-3","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-18"]},{"sidebar":"sidebar-4","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-15"]},{"sidebar":"sidebar-5","margin_top":10,"margin_bottom":0,"stop_id":"","screen_max_width":0,"screen_max_height":0,"width_inherit":false,"refresh_interval":1500,"window_load_hook":false,"disable_mo_api":false,"widgets":["text-9","text-13"]}];
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://vimsky.com/wp-content/plugins/q2w3-fixed-widget/js/q2w3-fixed-widget.min.js?ver=5.1.7'></script>
+<script type='text/javascript' src='https://vimsky.com/wp-content/plugins/wp-code-highlightjs/highlight.common.pack.js?ver=0.6.2'></script>
+<script type='text/javascript' src='https://vimsky.com/wp-content/plugins/wp-code-highlightjs/highlight.custom.pack.js?ver=0.6.2'></script>
+    <style>pre.hljs {padding: 5px;}
+pre.hljs code {}</style>
+    <script type="text/javascript">
+    (function($, window) {
+        var init_fn_flag = false;
+        var init_fn = (function() {
+            if (init_fn_flag)
+                return;
+            init_fn_flag = true;
+             hljs.configure({"tabReplace":"    "});
+            $('pre code').each(function(i, block) {
+                hljs.highlightBlock(block);
+            });
+        });
+        $(document).ready(init_fn);
+        $(window).on("load", init_fn);
+    })(jQuery, window);
+    </script>
+</body>
+</html>

@@ -1,4 +1,4 @@
-package java9;
+package practice;
 
 public class Sample {
 	public static void main(String[] args) throws Exception {

@@ -14,6 +14,9 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.Objects;
 
+import practice.Practice;
+import practice.S;
+
 public class Sample2 {
 	public static void main(String[] args) throws Exception {
 		Practice.get("src\\java9").sufnameMax(10).run();
@@ -56,7 +59,7 @@ class P6 {
 
 	public static void run(P6 p) {
 		GranaryManager gr = p.new GranaryManager("穀倉", p);
-		Supplier[] sups = new Supplier[3];
+		Supplier[] sups = new Supplier[5];
 		Consumer[] sons = new Consumer[10];
 		p.new Produce().produce(sons);
 		p.new Produce().produce(sups);
