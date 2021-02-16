@@ -27,8 +27,8 @@ public class TransparencyTest extends JFrame {
 				try {
 					TransparencyTest frame = new TransparencyTest();
 					frame.setVisible(true);
-					String sfname="src\\data\\horserun.jpg";
-					String dfname="src\\data\\horserun.png";
+					String sfname="src\\data\\nyo.jpg";
+					String dfname="src\\data\\nyo.png";
 					transparentize(dfname,sfname);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -75,12 +75,12 @@ public class TransparencyTest extends JFrame {
 					alpha = 255;
 				}
 				// #AARRGGBB 最前两位为透明度
-				rgb = (alpha << 24) | (rgb & 0x00ffffff);
+				rgb = (alpha << 24) | (rgb & 0xffffff);
 				bufferedImage.setRGB(x, y, rgb);
 			}
 		}
 		// 绘制设置了RGB的新图片
-		g2D.drawImage(bufferedImage, 0, 0, null);
+		//g2D.drawImage(bufferedImage, 0, 0, null);
 
 		// 生成图片为PNG
 		ImageIO.write(bufferedImage, "png", new File(destination));

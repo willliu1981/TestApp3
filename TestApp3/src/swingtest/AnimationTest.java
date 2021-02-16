@@ -27,7 +27,7 @@ public class AnimationTest extends JFrame {
 		AnimationTest an = new AnimationTest();
 		an.setVisible(true);
 
-		Timer timer = new Timer(100, new ActionListener() {
+		Timer timer = new Timer(200, new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 				an.animPanel.move();
@@ -47,11 +47,11 @@ public class AnimationTest extends JFrame {
 		this.contentPanel.setLayout(null);
 		this.add(contentPanel);
 
-		String fname = "src\\data\\horserun.png";
+		String fname = "src\\data\\n1.png";
 		Toolkit kit = this.getToolkit();
 		Image img = kit.getImage(fname);
 		ParseImage pa = new ParseImage(img, this.contentPanel);
-		pa.setFrameInfo(4,3, 12);
+		pa.setFrameInfo(1,1, 1);
 		animPanel = new AnimationPanel();
 		animPanel.setParse(pa);
 		animPanel.parse();
@@ -204,7 +204,7 @@ class AnimationPanel extends JPanel {
 
 		g.fill3DRect(x, y, w, h, false);
 		g.drawImage(this.frames[this.moveIdx()],
-				this.animLeft % (w + this.frames[0].getWidth(null)) - this.frames[0].getWidth(null), this.animTop,
+				this.animLeft % (w + this.frames[0].getWidth(null)) - this.frames[0].getWidth(null), this.animTop,100,100,
 				null);
 
 	}
