@@ -16,10 +16,19 @@ import java.io.InputStreamReader;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.Serializable;
+import java.net.MalformedURLException;
+import java.net.URI;
+import java.net.URL;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
+import java.nio.file.DirectoryStream;
+import java.nio.file.Files;
+import java.nio.file.LinkOption;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
+import java.nio.file.StandardOpenOption;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -34,48 +43,249 @@ public class Sample2 {
 
 class Pa {
 	public static void main(String[] args) {
-		
+
 	}
 }
+
+class P21 {
+	public static void main(String[] args) {
+		SynAll o = new SynAll();
+		S.o.l("start main at " + new Date());
+		Thread m1 = new M1(o);
+		Thread m2 = new M2(o);
+		m1.start();
+		m2.start();
+		S.o.l("end main at " + new Date());
+	}
+
+	static class SynAll {
+		private void sleep() {
+			try {
+				Thread.sleep(2500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+		public synchronized void m1() {
+			S.o.l("--Run m1 start");
+			sleep();
+			S.o.l("--Run m1 at " + new Date());
+		}
+
+		public synchronized void m2() {
+			S.o.l("--Run m2 start");
+			sleep();
+			S.o.l("--Run m2 at " + new Date());
+		}
+	}
+
+	static class M1 extends Thread {
+		SynAll o;
+
+		M1(SynAll o) {
+			this.o = o;
+		}
+
+		@Override
+		public void run() {
+			o.m1();
+		}
+	}
+
+	static class M2 extends Thread {
+		SynAll o;
+
+		M2(SynAll o) {
+			this.o = o;
+		}
+
+		@Override
+		public void run() {
+			o.m2();
+		}
+	}
+}
+
+class P20 {
+	public static void main(String[] args) {
+		MyRun run = new MyRun();
+		Thread t = new Thread(run);
+		t.start();
+
+		S.o.l("test");
+		try {
+			Thread.sleep(1000);
+			run.running = false;
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+
+	static class MyRun implements Runnable {
+		public volatile boolean running = true;
+		private int a = 0;
+
+		@Override
+		public void run() {
+			S.o.l("Thread started");
+			while (running) {
+				try {
+					Thread.sleep(10);
+					S.o.l(a++);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+			S.o.l("finishing");
+		}
+
+	}
+}
+
+class P19 {
+	public static void main(String[] args) throws IOException {
+		Path source = Paths.get("src\\java8_1z0809\\data\\tt.txt");
+		Charset cs = Charset.defaultCharset();
+		List<String> lines = Files.readAllLines(source, cs);
+		Path target = Paths.get("src\\java8_1z0809\\data\\tt3.txt");
+		Files.write(target, lines, cs, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING,
+				StandardOpenOption.WRITE);
+		S.o.l("done...");
+	}
+}
+
+class P18 {
+	public static void main(String[] args) {
+		Path dir = Paths.get("C:/Windows");
+		try (DirectoryStream<Path> stream = Files.newDirectoryStream(dir, "*.xml")) {
+			for (Path f : stream) {
+				S.o.l(f.getFileName());
+			}
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+}
+
+class P17 {
+	public static void main(String[] args) {
+		Path to = Paths.get("src\\java8_1z0809\\data\\web.png");
+		URL url;
+		try {
+			url = URI.create("file:///C:/Users/KuanWei/git/TestApp3/TestApp3/src/java8_1z0809/data/n1.png").toURL();
+			try (InputStream from = url.openStream()) {
+				Files.copy(from, to, StandardCopyOption.REPLACE_EXISTING);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		} catch (MalformedURLException e1) {
+			e1.printStackTrace();
+		}
+	}
+}
+
+class P16 {
+	public static void main(String[] args) throws IOException {
+		/*
+		 * String fname = System.getProperty("user.dir") +
+		 * "\\src\\java8_1z0809\\data\\test.txt\\ss"; Path p1 = Paths.get(fname); String
+		 * fname2 = System.getProperty("user.dir") +
+		 * "\\src\\java8_1z0809\\data\\test.txt\\aa\\bb"; Path p2 = Paths.get(fname2);
+		 * Files.move(p1, p2);
+		 *///
+		String fname = System.getProperty("user.dir") + "\\src\\java8_1z0809\\data\\test.txt";
+		Path p1 = Paths.get(fname);
+		String fname2 = System.getProperty("user.dir") + "\\src\\java8_1z0809\\data\\t.t2\\book2";
+		Path p2 = Paths.get(fname2);
+		Files.move(p1, p2, StandardCopyOption.REPLACE_EXISTING);
+
+	}
+}
+
+class P15 {
+	public static void main(String[] args) throws IOException {
+		String fname = System.getProperty("user.dir") + "\\src\\java8_1z0809\\data\\test.txt\\ss\\cc\\aa\\kk.txt";
+		Path p = Paths.get(fname);
+
+		/*
+		 * if(Files.exists(p)) { S.o.l("file exist"); Files.delete(p);
+		 * S.o.l("file delete"); }else { //Files.createFile(p); S.o.l("file created");
+		 * Files.createDirectories(p); }
+		 *///
+			// Files.deleteIfExists(p);
+		String nf = System.getProperty("user.dir") + "\\src\\java8_1z0809\\data\\test.txt\\ss\\cc\\ddd2\\t.txt";
+		Path p2 = Paths.get(nf);
+		// Files.copy(p, p2);
+
+		String nf3 = System.getProperty("user.dir") + "\\src\\java8_1z0809\\data\\test.txt\\rrr.txt";
+		Path p3 = Paths.get(nf3);
+		Files.move(p2, p3);
+
+	}
+}
+
+class P14 {
+	public static void main(String[] args) throws IOException {
+		String fname = System.getProperty("user.dir") + "\\src\\java8_1z0809\\data\\book.sav";
+		Path p = Paths.get(fname);
+		boolean b = Files.exists(p, LinkOption.NOFOLLOW_LINKS);
+		S.o.f("%s exists: %b%n", p, b);
+		b = Files.notExists(p);
+		S.o.f("%s exists: %b%n", p, b);
+		S.o.l(Files.isReadable(p));
+		S.o.l(Files.isWritable(p));
+		S.o.l(Files.isExecutable(p));
+		Path p2 = Paths.get(fname);
+		S.o.l(Files.isSameFile(p, p2));
+	}
+}
+
 class P13 {
 	public static void main(String[] args) {
-		Path p1=Paths.get("ccc/ddd/rrr");
+		Path p1 = Paths.get("ccc/ddd/rrr");
 		S.o.l(p1);
-		p1=p1.toAbsolutePath();
+		p1 = p1.toAbsolutePath();
 		S.o.l(p1.toAbsolutePath());
-		
-		Path p2=Paths.get("/ggg/xxx");
+
+		Path p2 = Paths.get("/ggg/xxx");
 		S.o.l(p2);
-		p2=p2.toAbsolutePath();
+		p2 = p2.toAbsolutePath();
 		S.o.l(p2.toAbsolutePath());
-		p1=p1.relativize(p2);
+		p1 = p1.relativize(p2);
 		S.o.l(p1);
 		S.o.l(p1.toAbsolutePath());
 
 	}
 }
+
 class P12 {
 	public static void main(String[] args) {
-		Path p1=Paths.get("/home/./ttt/xxx/cc/ccc/fff");
+		Path p1 = Paths.get("/home/./ttt/xxx/cc/ccc/fff");
 		S.o.l(p1);
-		p1=p1.normalize();
+		p1 = p1.normalize();
 		S.o.l(p1);
-		p1=p1.subpath(1, 3);
+		p1 = p1.subpath(1, 3);
 		S.o.l(p1);
-		p1=p1.resolve("cccc");
+		p1 = p1.resolve("cccc");
 		S.o.l(p1);
-		Path pp=Paths.get("rrr");
-		p1=p1.relativize(pp);
+		Path pp = Paths.get("rrr");
+		p1 = p1.relativize(pp);
 		S.o.l(p1);
-		
-		
+
 	}
 }
+
 class P11 {
 	public static void main(String[] args) {
-		//Path p1=Paths.get("C:\\Users\\KuanWei\\git\\TestApp3\\.gitignore");
-		//Path p1=Paths.get("\\TestApp3\\.gitignore");
-		Path p1=Paths.get("");
+		// Path p1=Paths.get("C:\\Users\\KuanWei\\git\\TestApp3\\.gitignore");
+		// Path p1=Paths.get("\\TestApp3\\.gitignore");
+		Path p1 = Paths.get("");
 		S.o.l(p1.getFileName());
 		S.o.l(p1.getParent());
 		S.o.l(p1.getNameCount());
@@ -83,14 +293,13 @@ class P11 {
 		S.o.l(p1.isAbsolute());
 		S.o.l(p1.toAbsolutePath());
 		S.o.l(p1.toUri());
-		
-		
+
 	}
 }
 
 class P10 {
 	public static void main(String[] args) {
-		String fname=System.getProperty("user.dir")+"\\src\\java8_1z0809\\data\\book.sav";
+		String fname = System.getProperty("user.dir") + "\\src\\java8_1z0809\\data\\book.sav";
 		output(fname);
 		try {
 			Thread.sleep(2000);
@@ -100,22 +309,20 @@ class P10 {
 		}
 		input(fname).forEach(System.out::println);
 	}
-	
+
 	static void output(String fname) {
-		Book b1=new Book("Java",1200d,new Author("David",10),new Author("Helen",3));
-		Book b2=new Book("PHP",900d,new Author("David",10));
-		Book b3=new Book("C#",760d,new Author("Kevin",8),new Author("Helen",3));
+		Book b1 = new Book("Java", 1200d, new Author("David", 10), new Author("Helen", 3));
+		Book b2 = new Book("PHP", 900d, new Author("David", 10));
+		Book b3 = new Book("C#", 760d, new Author("Kevin", 8), new Author("Helen", 3));
 
-
-
-		try(ObjectOutputStream oos=new ObjectOutputStream(new FileOutputStream(fname))){
+		try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(fname))) {
 			oos.writeObject(b1);
 			oos.writeObject(b2);
 			oos.writeObject(b3);
-			
-			S.o.l("output\n",b1);
+
+			S.o.l("output\n", b1);
 			S.o.l(b2);
-			S.o.l(b3+"\ninput");
+			S.o.l(b3 + "\ninput");
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -124,19 +331,19 @@ class P10 {
 			e.printStackTrace();
 		}
 	}
-	
+
 	static List<Book> input(String fname) {
-		List<Book> list=new ArrayList<>();
-		Book b=null;
-		try(ObjectInputStream ois=new ObjectInputStream(new FileInputStream(fname)) ){
-			while((b=(Book)ois.readObject())!=null) {
+		List<Book> list = new ArrayList<>();
+		Book b = null;
+		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream(fname))) {
+			while ((b = (Book) ois.readObject()) != null) {
 				b.setDiscount(0.9);
 				list.add(b);
 			}
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}catch(EOFException e) {
+		} catch (EOFException e) {
 			S.o.l("EOF...");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -145,12 +352,12 @@ class P10 {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+
 		return list;
 	}
 
-	static class Book implements Serializable{
-		static String publisher="NewBook";
+	static class Book implements Serializable {
+		static String publisher = "NewBook";
 		List<Author> authors = new ArrayList<>();
 		String name;
 		transient Double discount;
@@ -164,84 +371,75 @@ class P10 {
 			for (Author a : authors) {
 				this.authors.add(a);
 			}
-			this.discount=0.7;
-			
+			this.discount = 0.7;
+
 		}
-		
+
 		private void readObject(ObjectInputStream ois) throws ClassNotFoundException, IOException {
 			ois.defaultReadObject();
-			Manager m=(Manager)ois.readObject();
-			this.publish_year=ois.readInt();
+			Manager m = (Manager) ois.readObject();
+			this.publish_year = ois.readInt();
 			S.o.l(m);
-			S.o.l("get time:"+new Date());
+			S.o.l("get time:" + new Date());
 		}
-		
+
 		private void writeObject(ObjectOutputStream oos) throws IOException {
 			oos.defaultWriteObject();
-			Manager m=new Manager("Paul");
+			Manager m = new Manager("Paul");
 			oos.writeObject(m);
-			
-			this.publish_year=2021;
+
+			this.publish_year = 2021;
 			oos.writeInt(publish_year);
-			S.o.l("save data:"+m);
+			S.o.l("save data:" + m);
 		}
-		
+
 		public void setDiscount(double discount) {
-			this.discount=discount;
+			this.discount = discount;
 		}
-		
+
 		public Double getDiscountPrice() {
-			return this.price*this.discount;
+			return this.price * this.discount;
 		}
-		
+
 		public String toString() {
-			StringBuilder sb=new StringBuilder();
-			for(Author a:this.authors) {
+			StringBuilder sb = new StringBuilder();
+			for (Author a : this.authors) {
 				sb.append(a);
 				sb.append("\n\t");
 			}
-			return String.format("publisher:%s\n"
-					+ "publish year:%d\n"
-					+ "book name:%s\n"
-					+ "price:%.2f\n"
-					+ "discount:%f\n"
-					+ "discountprice:%f\n"
-					+ "aruthors:%s\n",
-					this.publisher,
-					this.publish_year,
-					this.name,
-					this.price,
-					this.discount,
-					this.getDiscountPrice(),
-					sb); 
+			return String.format(
+					"publisher:%s\n" + "publish year:%d\n" + "book name:%s\n" + "price:%.2f\n" + "discount:%f\n"
+							+ "discountprice:%f\n" + "aruthors:%s\n",
+					this.publisher, this.publish_year, this.name, this.price, this.discount, this.getDiscountPrice(),
+					sb);
 		}
 	}
 
 	static class Author implements Serializable {
 		String name;
 		Integer work_for_age;
-		
-		Author(String name,int age){
-			this.name=name;
-			this.work_for_age=age;
+
+		Author(String name, int age) {
+			this.name = name;
+			this.work_for_age = age;
 		}
-		
+
 		public String toString() {
-			return String.format("name:%s work for age:%d",this.name,this.work_for_age);
+			return String.format("name:%s work for age:%d", this.name, this.work_for_age);
 		}
 	}
-	
-	static class Manager implements Serializable{
+
+	static class Manager implements Serializable {
 		String name;
 		Date date;
-		
-		Manager(String name){
-			this.name=name;
-			this.date=new Date();
+
+		Manager(String name) {
+			this.name = name;
+			this.date = new Date();
 		}
-		
+
 		public String toString() {
-			return String.format("name:%s\n time:%s\n",this.name,this.date);
+			return String.format("name:%s\n time:%s\n", this.name, this.date);
 		}
 	}
 }
